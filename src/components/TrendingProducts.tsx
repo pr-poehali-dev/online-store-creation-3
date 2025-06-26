@@ -52,46 +52,49 @@ const TrendingProducts = () => {
   ];
 
   return (
-    <section className="py-16 bg-white">
+    <section className="py-24 bg-white">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold mb-4">Трендовые товары</h2>
-          <p className="text-gray-600 text-lg">
-            Самые популярные товары этого месяца
+        <div className="text-center mb-16">
+          <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+            Трендовые товары
+          </h2>
+          <p className="text-gray-600 text-xl max-w-2xl mx-auto leading-relaxed">
+            Самые популярные товары этого месяца с эксклюзивными скидками
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {products.map((product) => (
             <Card
               key={product.id}
-              className="group cursor-pointer hover:shadow-xl transition-all duration-300 overflow-hidden"
+              className="group cursor-pointer hover:shadow-2xl transition-all duration-500 overflow-hidden bg-white border-0 shadow-lg hover:shadow-purple-500/20 hover:-translate-y-1"
             >
-              <div className="relative">
+              <div className="relative overflow-hidden">
                 <img
                   src={product.image}
                   alt={product.name}
-                  className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+                  className="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-700"
                 />
-                <Badge className="absolute top-3 left-3 bg-gradient-to-r from-purple-500 to-pink-500">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <Badge className="absolute top-4 left-4 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold px-3 py-1 rounded-full shadow-lg">
                   {product.badge}
                 </Badge>
                 <Button
                   size="icon"
                   variant="ghost"
-                  className="absolute top-3 right-3 bg-white/80 hover:bg-white"
+                  className="absolute top-4 right-4 bg-white/90 hover:bg-white shadow-lg backdrop-blur-sm rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 hover:scale-110"
                 >
-                  <Icon name="Heart" className="w-4 h-4" />
+                  <Icon name="Heart" className="w-5 h-5 text-gray-700" />
                 </Button>
               </div>
 
-              <CardContent className="p-4">
-                <h3 className="font-semibold mb-2 group-hover:text-purple-600 transition-colors">
+              <CardContent className="p-6">
+                <h3 className="font-bold text-lg mb-3 group-hover:text-purple-600 transition-colors duration-300">
                   {product.name}
                 </h3>
 
-                <div className="flex items-center mb-2">
-                  <div className="flex items-center mr-2">
+                <div className="flex items-center mb-4">
+                  <div className="flex items-center mr-3">
                     {[...Array(5)].map((_, i) => (
                       <Icon
                         key={i}
@@ -100,36 +103,40 @@ const TrendingProducts = () => {
                       />
                     ))}
                   </div>
-                  <span className="text-sm text-gray-500">
+                  <span className="text-sm text-gray-600 font-medium">
                     ({product.reviews})
                   </span>
                 </div>
 
-                <div className="flex items-center justify-between mb-4">
-                  <div className="flex items-center space-x-2">
-                    <span className="text-xl font-bold text-purple-600">
+                <div className="flex items-center justify-between mb-6">
+                  <div className="flex items-center space-x-3">
+                    <span className="text-2xl font-bold text-purple-600">
                       {product.price.toLocaleString()} ₽
                     </span>
                     {product.originalPrice && (
-                      <span className="text-sm text-gray-500 line-through">
+                      <span className="text-sm text-gray-500 line-through font-medium">
                         {product.originalPrice.toLocaleString()} ₽
                       </span>
                     )}
                   </div>
                 </div>
 
-                <Button className="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600">
-                  <Icon name="ShoppingCart" className="w-4 h-4 mr-2" />В корзину
+                <Button className="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 rounded-xl py-6 text-base font-semibold shadow-lg hover:shadow-purple-500/25 transition-all duration-300 hover:scale-105">
+                  <Icon name="ShoppingCart" className="w-5 h-5 mr-2" />В корзину
                 </Button>
               </CardContent>
             </Card>
           ))}
         </div>
 
-        <div className="text-center mt-12">
-          <Button size="lg" variant="outline" className="px-8">
+        <div className="text-center mt-16">
+          <Button
+            size="lg"
+            variant="outline"
+            className="px-12 py-6 text-lg font-semibold border-2 border-purple-200 hover:bg-purple-50 hover:border-purple-300 rounded-xl transition-all duration-300 hover:scale-105"
+          >
             Посмотреть все товары
-            <Icon name="ArrowRight" className="w-4 h-4 ml-2" />
+            <Icon name="ArrowRight" className="w-5 h-5 ml-3" />
           </Button>
         </div>
       </div>
